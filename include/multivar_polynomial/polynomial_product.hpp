@@ -11,6 +11,8 @@
 #include "Eigen/Core"
 #include "fmt/core.h"
 
+#include <iostream>
+
 
 namespace multivar_polynomial
 {
@@ -64,11 +66,18 @@ namespace multivar_polynomial
         ));
       }
       std::size_t i = 0;
+      std::cout << "in constructor\n";
       for(auto it = s; it != e; ++it)
       {
         polynomials_[i] = *it;
         ++i;
+        for(const auto& i_and_v : polynomials_[i])
+        {
+          const auto& [i, v] = i_and_v;
+          std::cout << i << ',' << v << '\n';
+        }
       }
+      std::cout << "in constructor\n";
     }
 
     explicit PolynomialProduct(std::initializer_list<polynomial_type> l)

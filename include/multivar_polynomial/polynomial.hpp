@@ -11,6 +11,7 @@
 #include "boost/container/new_allocator.hpp"
 #include "fmt/core.h"
 
+#include <iostream>
 
 namespace multivar_polynomial
 {
@@ -163,6 +164,7 @@ namespace multivar_polynomial
 
     Polynomial& operator=(const Polynomial& other)
     {
+      std::cout << "const & operator=\n";
       index2value_ = other.index2value_;
       return *this;
     }
@@ -171,6 +173,7 @@ namespace multivar_polynomial
 
     Polynomial& operator=(Polynomial&& other)
     {
+      std::cout << "&& operator=\n";
       index2value_ = std::move(other.index2value_);
       return *this;
     }
